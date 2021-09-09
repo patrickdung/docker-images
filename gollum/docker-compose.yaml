@@ -1,0 +1,15 @@
+---
+version: "3.9"
+services:
+  service-gollum:
+    image: patrickdung/gollum:1.0
+    container_name: "container-gollum"
+    hostname: "container-gollum"
+    environment:
+      # - TZ=Etc/GMT-8
+      - GIT_BRANCH_NAME=main
+    volumes:
+      - /data/container/app/gollum:/wiki
+    ports:
+      - 127.0.0.1:5009:4567
+    user: 1000:1000
