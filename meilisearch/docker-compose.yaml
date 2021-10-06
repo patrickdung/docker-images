@@ -1,0 +1,16 @@
+---
+version: "3.9"
+services:
+  service-meilisearch:
+    image: patrickdung/meilisearch:0.4
+    container_name: "container-meilisearch"
+    hostname: "container-meilisearch"
+    environment:
+      - MEILI_NO_ANALYTICS=true
+      - MEILI_ENV=production
+      - MEILI_MASTER_KEY=1234
+    volumes:
+      - /data/meilisearch:/data.ms
+    port
+      - 127.0.0.1:7701:7700
+    user: 1000:1000

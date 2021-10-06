@@ -1,3 +1,7 @@
+# SPDX-License-Identifier: Apache-2.0
+#
+# Copyright (c) 2021 Patrick Dung
+
 # User has to run/provide their git repo
 # when the container is run
 
@@ -18,7 +22,7 @@ RUN set -eux && \
 # 1) https://github.com/gollum/docker/issues/2
 # gem install --no-document therubyracer
 # 2) Seems pygments is not effective
-# 3) not installing because it seems need to update the santizer to use it
+# 3) Not installing because it seems need to update the santizer to use it
 # gem install pygments.rb
 
 RUN set -eux && \
