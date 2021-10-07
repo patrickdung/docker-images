@@ -37,12 +37,12 @@ RUN set -eux && \
     mkdir /home/meilisearch/bin && \
     chmod 755 /home/meilisearch/bin
 
-    # source file uses armv8 instead of arm64
+    # source url uses armv8 instead of arm64
     # curl -L -v -o /home/meilisearch/bin/meilisearch ${SOURCE_BINARY_BASEURL}/${MEILISEARCH_VERSION}/meilisearch-linux-${ARCH} && \
 
-RUN if [ "${ARCH}" = "arm64" ] ; then curl -L -v -o /home/meilisearch/bin/meilisearch ${SOURCE_BINARY_BASEURL}/${MEILISEARCH_VERSION}/meilisearch-linux-armv8; ls -l /home/meilisearch/bin/meilisearch; /usr/bin/aarch64-linux-gnu-strip --target=elf64-littleaarch64 /home/meilisearch/bin/meilisearch; fi
+RUN if [ "${ARCH}" = "arm64" ] ; then curl -L -v -o /home/meilisearch/bin/meilisearch ${SOURCE_BINARY_BASEURL}/${MEILISEARCH_VERSION}/meilisearch-linux-armv8; ls -l /home/meilisearch/bin/meilisearch; /usr/bin/aarch64-linux-gnu-strip --strip-debug --target=elf64-littleaarch64 /home/meilisearch/bin/meilisearch; fi
 
-RUN if [ "${ARCH}" = "amd64" ] ; then curl -L -v -o /home/meilisearch/bin/meilisearch ${SOURCE_BINARY_BASEURL}/${MEILISEARCH_VERSION}/meilisearch-linux-amd64; ls -l /home/meilisearch/bin/meilisearch; /usr/bin/strip /home/meilisearch/bin/meilisearch; fi
+RUN if [ "${ARCH}" = "amd64" ] ; then curl -L -v -o /home/meilisearch/bin/meilisearch ${SOURCE_BINARY_BASEURL}/${MEILISEARCH_VERSION}/meilisearch-linux-amd64; ls -l /home/meilisearch/bin/meilisearch; /usr/bin/strip --strip-debug /home/meilisearch/bin/meilisearch; fi
 
 RUN set -eux && chmod 755 /home/meilisearch/bin/meilisearch
 
@@ -57,5 +57,4 @@ ENV     MEILI_HTTP_ADDR 0.0.0.0:7700
 EXPOSE  7700/tcp
 
 ENTRYPOINT ["tini", "--"]
-##CMD     ./meilisearch
 CMD     /home/meilisearch/bin/meilisearch

@@ -2,7 +2,7 @@
 version: "3.9"
 services:
   service-meilisearch:
-    image: patrickdung/meilisearch:0.4
+    image: patrickdung/meilisearch:0.5
     container_name: "container-meilisearch"
     hostname: "container-meilisearch"
     environment:
