@@ -9,10 +9,8 @@ ARG MEILISEARCH_VERSION=""
 #ARG ARCH="amd64"
 ARG ARCH=""
 
-ARG SOURCE_BINARY_BASEURL="https://github.com/meilisearch/MeiliSearch/releases/download"
-
-#https://github.com/meilisearch/MeiliSearch/releases/download/v0.23.0rc0/meilisearch-linux-amd64
-#https://github.com/meilisearch/MeiliSearch/releases/download/v0.23.0rc0/meilisearch-linux-armv8
+#ARG SOURCE_BINARY_BASEURL="https://github.com/meilisearch/MeiliSearch/releases/download"
+ARG SOURCE_BINARY_BASEURL=""
 
 RUN set -eux && \
     apt-get -y update && \
@@ -37,17 +35,22 @@ RUN set -eux && \
     mkdir /home/meilisearch/bin && \
     chmod 755 /home/meilisearch/bin
 
+# Offical
+#https://github.com/meilisearch/MeiliSearch/releases/download/v0.23.0rc0/meilisearch-linux-amd64
+#https://github.com/meilisearch/MeiliSearch/releases/download/v0.23.0rc0/meilisearch-linux-armv8
+
     # source url uses armv8 instead of arm64
+    # My version uses aarch64 instead of armv8
     # curl -L -v -o /home/meilisearch/bin/meilisearch ${SOURCE_BINARY_BASEURL}/${MEILISEARCH_VERSION}/meilisearch-linux-${ARCH} && \
 
-RUN if [ "${ARCH}" = "arm64" ] ; then curl -L -v -o /home/meilisearch/bin/meilisearch ${SOURCE_BINARY_BASEURL}/${MEILISEARCH_VERSION}/meilisearch-linux-armv8; ls -l /home/meilisearch/bin/meilisearch; /usr/bin/aarch64-linux-gnu-strip --strip-debug --target=elf64-littleaarch64 /home/meilisearch/bin/meilisearch; fi
+RUN set -eux && if [ "${ARCH}" = "arm64" ] ; then curl -L -v -o /home/meilisearch/bin/meilisearch ${SOURCE_BINARY_BASEURL}/${MEILISEARCH_VERSION}/meilisearch-linux-aarch64; ls -l /home/meilisearch/bin/meilisearch; /usr/bin/aarch64-linux-gnu-strip --strip-debug --target=elf64-littleaarch64 /home/meilisearch/bin/meilisearch; fi
 
-RUN if [ "${ARCH}" = "amd64" ] ; then curl -L -v -o /home/meilisearch/bin/meilisearch ${SOURCE_BINARY_BASEURL}/${MEILISEARCH_VERSION}/meilisearch-linux-amd64; ls -l /home/meilisearch/bin/meilisearch; /usr/bin/strip --strip-debug /home/meilisearch/bin/meilisearch; fi
+RUN set -eux && if [ "${ARCH}" = "amd64" ] ; then curl -L -v -o /home/meilisearch/bin/meilisearch ${SOURCE_BINARY_BASEURL}/${MEILISEARCH_VERSION}/meilisearch-linux-amd64; ls -l /home/meilisearch/bin/meilisearch; /usr/bin/strip --strip-debug /home/meilisearch/bin/meilisearch; fi
 
 RUN set -eux && chmod 755 /home/meilisearch/bin/meilisearch
 
 USER root
-RUN apt-get -y purge binutils binutils-aarch64-linux-gnu binutils-multiarch
+RUN set -eux && apt-get -y purge binutils binutils-aarch64-linux-gnu binutils-multiarch
 
 USER meilisearch
 VOLUME /data.ms
