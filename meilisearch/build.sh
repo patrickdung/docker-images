@@ -1,6 +1,6 @@
 ARCH=arm64
 #ARCH=amd64
-MEILISEARCH_VERSION=v0.23.0
+MEILISEARCH_VERSION=v0.23.1
 #MEILISEARCH_VERSION=v0.23.0rc2-rust-cross-build-2
 
 # Official
@@ -9,7 +9,7 @@ MEILISEARCH_VERSION=v0.23.0
 #SOURCE_BINARY_BASEURL="https://github.com/patrickdung/MeiliSearch/releases/download"
 # Repo with scripts only for cross build
 SOURCE_BINARY_BASEURL="https://github.com/patrickdung/MeiliSearch-crossbuild/releases/download"
-TAG_VERSION=0.7
+TAG_VERSION=0.8
 
 sudo podman run --rm --privileged multiarch/qemu-user-static --reset -p yes
 
