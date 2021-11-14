@@ -7,7 +7,7 @@
 
 ARG BASE_IMAGE="docker.io/ruby:3.0-slim-bullseye"
 
-FROM ${BASE_IMAGE}
+FROM ${BASE_IMAGE} as build
 
 ARG GOLLUM_VERSION="5.2.3"
 
@@ -16,7 +16,7 @@ ARG GIT_BRANCH_NAME="main"
 RUN set -eux && \
     apt-get -y update && \
     apt-get -y install --no-install-suggests \
-    libicu-dev cmake make gcc g++ pkg-config git git-man bash vim docutils python3-pygments sed libjemalloc2 && \
+    libicu-dev cmake make gcc g++ pkg-config git git-man bash docutils python3-pygments sed && \
     rm -rf /var/lib/apt/lists/*
 
 # 1) https://github.com/gollum/docker/issues/2
@@ -27,24 +27,35 @@ RUN set -eux && \
 
 RUN set -eux && \
     gem install --no-document asciidoctor && \
-    gem install --no-document gollum -v ${GOLLUM_VERSION} && \
-    apt-get -y purge libicu-dev cmake cmake-data make gcc g++ linux-libc-dev \
-    libc6-dev libssl-dev zlib1g-dev libffi-dev libgmp-dev libyaml-dev && \
-    apt-get -y autoremove && apt-get -y clean && \
+    gem install --no-document gollum -v ${GOLLUM_VERSION}
+
+FROM ${BASE_IMAGE}
+
+COPY --from=build /usr/local/bundle/ /usr/local/bundle/
+
+RUN set -eux && \
+    apt-get -y update && \
+    apt-get -y install --no-install-suggests \
+    pkg-config git git-man bash vim-tiny docutils python3-pygments sed libjemalloc2 && \
+    apt-get -y upgrade && apt-get -y autoremove && apt-get -y clean && \
+    rm -rf /var/lib/apt/lists/* && \
 # Don't use git repo as home directoy \
-    addgroup \
+    groupadd \
       --gid 1000 \
       wiki && \
-    adduser \
+    useradd --no-log-init \
+      --create-home \
+      --home-dir /home/wiki \
       --shell /bin/bash \
       --uid 1000 \
       --gid 1000 \
-      --disabled-password \
+      --key MAIL_DIR=/dev/null \
       wiki && \
     mkdir -p /wiki && \
     chown wiki:wiki /wiki
 
-USER 1000:1000
+##USER 1000:1000
+USER wiki
 
 VOLUME /wiki
 
@@ -57,6 +68,7 @@ ENV GIT_BRANCH_NAME ${GIT_BRANCH_NAME}
 # gollum assume default branch is main
 
 #ENTRYPOINT ["gollum"]
-ENTRYPOINT gollum /wiki --ref ${GIT_BRANCH_NAME}
+#ENTRYPOINT gollum /wiki --ref ${GIT_BRANCH_NAME}
+ENTRYPOINT ["gollum", "/wiki", "--ref", "${GIT_BRANCH_NAME}"]
 
 EXPOSE 4567

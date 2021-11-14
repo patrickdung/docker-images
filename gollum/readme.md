@@ -2,7 +2,7 @@
   Used to create container image for Gollum with opinioned modifications
   - Build the image:
 ```
-$ podman build . -t 'patrickdung/gollum:1.0'
+$ podman build . -t 'patrickdung/gollum:1.1'
 ```
 
 - docker-compose with Podman

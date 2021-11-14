@@ -1,8 +1,8 @@
 ---
-version: "3.9"
+version: "3.8"
 services:
   service-gollum:
-    image: patrickdung/gollum:1.0
+    image: patrickdung/gollum:1.1
     container_name: "container-gollum"
     hostname: "container-gollum"
     environment:
@@ -11,5 +11,5 @@ services:
     volumes:
       - /data/container/app/gollum:/wiki
     ports:
-      - 127.0.0.1:5009:4567
+      - 127.0.0.1:5017:4567
     user: 1000:1000
