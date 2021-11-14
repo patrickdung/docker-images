@@ -16,15 +16,16 @@ RUN set -eux && \
     apt-get -y update && \
     apt-get -y install --no-install-suggests \
     bash tini curl file procps binutils binutils-aarch64-linux-gnu binutils-multiarch && \
-    rm -rf /var/lib/apt/lists/* && \
-    addgroup \
+    groupadd \
       --gid 1000 \
       meilisearch && \
-    adduser \
+    useradd --no-log-init \
+      --create-home \
+      --home-dir /home/meilisearch \
       --shell /bin/bash \
       --uid 1000 \
       --gid 1000 \
-      --disabled-password \
+      --key MAIL_DIR=/dev/null \
       meilisearch && \
     mkdir -p /meilisearch /data.ms && \
     chown meilisearch:meilisearch /meilisearch /data.ms
@@ -43,14 +44,19 @@ RUN set -eux && \
     # My version uses aarch64 instead of armv8
     # curl -L -v -o /home/meilisearch/bin/meilisearch ${SOURCE_BINARY_BASEURL}/${MEILISEARCH_VERSION}/meilisearch-linux-${ARCH} && \
 
-RUN set -eux && if [ "${ARCH}" = "arm64" ] ; then curl -L -v -o /home/meilisearch/bin/meilisearch ${SOURCE_BINARY_BASEURL}/${MEILISEARCH_VERSION}/meilisearch-linux-aarch64; ls -l /home/meilisearch/bin/meilisearch; /usr/bin/aarch64-linux-gnu-strip --strip-debug --target=elf64-littleaarch64 /home/meilisearch/bin/meilisearch; fi
+RUN set -eux && \
+  if [ "${ARCH}" = "arm64" ] ; then curl -L -v -o /home/meilisearch/bin/meilisearch ${SOURCE_BINARY_BASEURL}/${MEILISEARCH_VERSION}/meilisearch-linux-aarch64; ls -l /home/meilisearch/bin/meilisearch; /usr/bin/aarch64-linux-gnu-strip --strip-debug --target=elf64-littleaarch64 /home/meilisearch/bin/meilisearch; fi \
+  && chmod 755 /home/meilisearch/bin/meilisearch
 
-RUN set -eux && if [ "${ARCH}" = "amd64" ] ; then curl -L -v -o /home/meilisearch/bin/meilisearch ${SOURCE_BINARY_BASEURL}/${MEILISEARCH_VERSION}/meilisearch-linux-amd64; ls -l /home/meilisearch/bin/meilisearch; /usr/bin/strip --strip-debug /home/meilisearch/bin/meilisearch; fi
-
-RUN set -eux && chmod 755 /home/meilisearch/bin/meilisearch
+RUN set -eux && \
+  if [ "${ARCH}" = "amd64" ] ; then curl -L -v -o /home/meilisearch/bin/meilisearch ${SOURCE_BINARY_BASEURL}/${MEILISEARCH_VERSION}/meilisearch-linux-amd64; ls -l /home/meilisearch/bin/meilisearch; /usr/bin/strip --strip-debug /home/meilisearch/bin/meilisearch; fi \
+  && chmod 755 /home/meilisearch/bin/meilisearch
 
 USER root
-RUN set -eux && apt-get -y purge binutils binutils-aarch64-linux-gnu binutils-multiarch
+RUN set -eux && \
+    apt-get -y purge binutils binutils-aarch64-linux-gnu binutils-multiarch && \
+    apt-get -y upgrade && apt-get -y autoremove && apt-get -y clean && \
+    rm -rf /var/lib/apt/lists/*
 
 USER meilisearch
 VOLUME /data.ms
@@ -60,4 +66,4 @@ ENV     MEILI_HTTP_ADDR 0.0.0.0:7700
 EXPOSE  7700/tcp
 
 ENTRYPOINT ["tini", "--"]
-CMD     /home/meilisearch/bin/meilisearch
+CMD     ["/home/meilisearch/bin/meilisearch"]

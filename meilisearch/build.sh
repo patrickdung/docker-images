@@ -9,7 +9,7 @@ MEILISEARCH_VERSION=v0.23.1
 #SOURCE_BINARY_BASEURL="https://github.com/patrickdung/MeiliSearch/releases/download"
 # Repo with scripts only for cross build
 SOURCE_BINARY_BASEURL="https://github.com/patrickdung/MeiliSearch-crossbuild/releases/download"
-TAG_VERSION=0.8
+TAG_VERSION=${MEILISEARCH_VERSION}
 
 sudo podman run --rm --privileged multiarch/qemu-user-static --reset -p yes
 
