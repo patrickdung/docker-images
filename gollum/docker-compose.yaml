@@ -5,6 +5,8 @@ services:
     image: patrickdung/gollum:1.1
     container_name: "container-gollum"
     hostname: "container-gollum"
+    cap_drop:
+      - ALL
     environment:
       # - TZ=Etc/GMT-8
       - GIT_BRANCH_NAME=main
