@@ -1,8 +1,9 @@
 ---
-version: "3.8"
+version: "3.9"
 services:
   service-gollum:
-    image: patrickdung/gollum:1.1
+    image: patrickdung/gollum:latest
+    pull_policy: always
     container_name: "container-gollum"
     hostname: "container-gollum"
     cap_drop:

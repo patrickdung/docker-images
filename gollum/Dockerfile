@@ -16,7 +16,7 @@ ARG GIT_BRANCH_NAME="main"
 RUN set -eux && \
     apt-get -y update && \
     apt-get -y install --no-install-suggests \
-    libicu-dev cmake make gcc g++ pkg-config git git-man bash docutils python3-pygments sed && \
+      libicu-dev cmake make gcc g++ pkg-config git git-man bash docutils python3-pygments sed && \
     rm -rf /var/lib/apt/lists/*
 
 # 1) https://github.com/gollum/docker/issues/2
@@ -29,14 +29,15 @@ RUN set -eux && \
     gem install --no-document asciidoctor && \
     gem install --no-document gollum -v ${GOLLUM_VERSION}
 
-FROM ${BASE_IMAGE}
+# ---------------
 
-COPY --from=build /usr/local/bundle/ /usr/local/bundle/
+FROM ${BASE_IMAGE}
 
 RUN set -eux && \
     apt-get -y update && \
     apt-get -y install --no-install-suggests \
-    pkg-config git git-man bash vim-tiny docutils python3-pygments sed libjemalloc2 && \
+      pkg-config git git-man bash vim-tiny docutils python3-pygments sed libjemalloc2 && \
+    apt-get -y purge linux-libc-dev && \
     apt-get -y upgrade && apt-get -y autoremove && apt-get -y clean && \
     rm -rf /var/lib/apt/lists/* && \
 # Don't use git repo as home directoy \
@@ -53,6 +54,8 @@ RUN set -eux && \
       wiki && \
     mkdir -p /wiki && \
     chown wiki:wiki /wiki
+
+COPY --from=build /usr/local/bundle/ /usr/local/bundle/
 
 ##USER 1000:1000
 USER wiki
