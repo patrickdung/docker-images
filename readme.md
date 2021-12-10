@@ -7,4 +7,4 @@ The created continer image would contain
 other software (such as Bash, glibc and etc.).
 
 Please check any direct and in-direct dependency of the software
-being produced or containted.
+being produced or contained.
