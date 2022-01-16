@@ -80,12 +80,13 @@ If the container is signed (by me). You can verify by below steps:
 
 . Get my Cosign public key and save as cosign.pub
 +
------
+[source,plaintext]
+----
 -----BEGIN PUBLIC KEY-----
 MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAENAxpHzZWHRHsR72J+Zzm6M32UAvv
 YeHhQD4doXjqNXHbgXI212HVfmLzBevCvUqurwPvEsTf9FqWuYHUUrrK6w==
 -----END PUBLIC KEY-----
------
+----
 +
 . Command for Cosign
 +
@@ -95,9 +96,10 @@ cosign verify --key cosign.pub \
   [container-registry/project-name:tag]
 ----
 +
+Example:
++
 [source,bash]
 ----
-# Example:
 cosign verify --key cosign.pub \
   ghcr.io/patrickdung/meilisearch-crossbuild:v0.24.0
 ----
