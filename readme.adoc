@@ -68,7 +68,8 @@ a|
 |N/A, currently Dockerfile only
 |N/A
 a|
-* No official Docker image for ARM64 is provided
+* Just Dockerfile (AMD64)
+* I would create the image if I would use ARM64 with Gollum in the future
 * Use Debian as base OS
 |
 
