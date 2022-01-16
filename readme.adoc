@@ -1,0 +1,115 @@
+# My Dockerfile and docker-compose
+
+* For development, I mostly use Podman instead of Docker.
+Except some applications that only supports Docker (e.g. Cosign)
+* Please check the license of the components of the container images.
+** Using Apache 2.0 License for the Dockerfiles and docker-compose
+does not mean the container image is under Apache 2.0 License.
+** The created container image would contain
+other software (such as Bash, glibc and etc.), these software may
+be in different licenses.
+* Please check any direct and in-direct dependency of the software
+being produced or contained.
+
+== List of materials
+
+* Here's a list of Dockerfile and container images that maintain or create
+
+[.stripes-even,cols="2,3,3,1,5,2"]
+|===
+|Application name
+|Dockerfile/building repository
+|Container repository
+|Signed
+|Purpose
+|Remark
+
+|pod-recon
+|https://github.com/patrickdung/pod-recon[GitHub repo, a Git mirror]
+|https://gitlab.com/patrickdung/pod-recon/container_registry/2650242[GitLab Container Registry]
+|Yes
+|Collection of tools for troubleshooting in container environments
+|
+
+|https://github.com/meilisearch/MeiliSearch/[MeiliSearch]
+|https://github.com/patrickdung/MeiliSearch-crossbuild[GitHub repo]
+|https://github.com/patrickdung/MeiliSearch-crossbuild/pkgs/container/meilisearch-crossbuild[GitHub packages]
+|Yes
+a|
+* For using stripped MeiliSearch binary
+* Use Debian as base OS
+|
+
+|https://github.com/Requarks/wiki[WikiJS]
+|https://github.com/patrickdung/wikijs-crossbuild[GitHub repo]
+|https://github.com/users/patrickdung/packages/container/package/wikijs-crossbuild[GitHub packages]
+|Yes
+|Use Debian as base OS
+|
+
+|https://github.com/coralproject/talk[Coral Project - Talk]
+|https://github.com/patrickdung/coral-project-talk-container[GitHub repo]
+|https://gitlab.com/patrickdung/docker-images/container_registry/2628639[GitLab Container Registry, ARM64 only]
+|No
+a|
+* Coral Project - Talk does not (currently) provide official ARM64 Docker image
+* Use Debian as base OS
+|CircleCI
+
+|https://github.com/arp242/goatcounter[Goat Counter]
+|https://github.com/patrickdung/goatcounter-container[GitHub repo]
+|https://github.com/users/patrickdung/packages/container/package/goatcounter-container[GitHub packages]
+|Yes
+|No official Docker image is provided
+|
+
+|https://github.com/gollum/gollum/[Gollum]
+|https://github.com/patrickdung/docker-images/tree/main/gollum[GitHub repo, a Git mirror]
+|N/A, currently Dockerfile only
+|N/A
+a|
+* No official Docker image for ARM64 is provided
+* Use Debian as base OS
+|
+
+|===
+
+== Container image verification by Cosign
+
+If the container is signed (by me). You can verify by below steps:
+
+. Get my Cosign public key and save as cosign.pub
++
+-----
+-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAENAxpHzZWHRHsR72J+Zzm6M32UAvv
+YeHhQD4doXjqNXHbgXI212HVfmLzBevCvUqurwPvEsTf9FqWuYHUUrrK6w==
+-----END PUBLIC KEY-----
+-----
++
+. Command for Cosign
++
+[source,bash]
+----
+cosign verify --key cosign.pub \
+  [container-registry/project-name:tag]
+----
++
+[source,bash]
+----
+# Example:
+cosign verify --key cosign.pub \
+  ghcr.io/patrickdung/meilisearch-crossbuild:v0.24.0
+----
++
+. Output:
++
+----
+Verification for ghcr.io/patrickdung/meilisearch-crossbuild:v0.24.0 --
+The following checks were performed on each of these signatures:
+  - The cosign claims were validated
+  - The signatures were verified against the specified public key
+  - Any certificates were verified against the Fulcio roots.
+
+[{"critical":{"identity":{"docker-reference":"ghcr.io/patrickdung/meilisearch-crossbuild"},"image":{"docker-manifest-digest":"sha256:41969fc06309c9988a23aa5a1ca677c171c9011399527d2c2120bab87ea9311a"},"type":"cosign container image signature"},"optional":null}]
+----
