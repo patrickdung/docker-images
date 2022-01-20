@@ -50,11 +50,11 @@ a|
 |https://github.com/coralproject/talk[Coral Project - Talk]
 |https://github.com/patrickdung/coral-project-talk-container[GitHub repo]
 |https://gitlab.com/patrickdung/docker-images/container_registry/2628639[GitLab Container Registry, ARM64 only]
-|No
+|Yes
 a|
 * Coral Project - Talk does not (currently) provide official ARM64 Docker image
 * Use Debian as base OS
-|CircleCI
+|CircleCI (build), GH actions (Cosign/SBOM)
 
 |https://github.com/arp242/goatcounter[Goat Counter]
 |https://github.com/patrickdung/goatcounter-container[GitHub repo]
