@@ -31,9 +31,16 @@ being produced or contained.
 |Collection of tools for troubleshooting in container environments
 |
 
+|https://github.com/genuinetools/amicontained/[amicontained]
+|https://github.com/patrickdung/amicontained-build[GitHub repo]
+|https://github.com/patrickdung/amicontained-build/pkgs/container/amicontained-build[GitHub container registry]
+|Yes
+|Aims to use amicontained on ARM64 platform
+|
+
 |https://github.com/meilisearch/MeiliSearch/[MeiliSearch]
 |https://github.com/patrickdung/MeiliSearch-crossbuild[GitHub repo]
-|https://github.com/patrickdung/MeiliSearch-crossbuild/pkgs/container/meilisearch-crossbuild[GitHub packages]
+|https://github.com/patrickdung/MeiliSearch-crossbuild/pkgs/container/meilisearch-crossbuild[GitHub container registry]
 |Yes
 a|
 * For using stripped MeiliSearch binary
@@ -42,7 +49,7 @@ a|
 
 |https://github.com/Requarks/wiki[WikiJS]
 |https://github.com/patrickdung/wikijs-crossbuild[GitHub repo]
-|https://github.com/users/patrickdung/packages/container/package/wikijs-crossbuild[GitHub packages]
+|https://github.com/patrickdung/wikijs-crossbuild/pkgs/container/wikijs-crossbuild[GitHub container registry]
 |Yes
 |Use Debian as base OS
 |
@@ -58,7 +65,7 @@ a|
 
 |https://github.com/arp242/goatcounter[Goat Counter]
 |https://github.com/patrickdung/goatcounter-container[GitHub repo]
-|https://github.com/users/patrickdung/packages/container/package/goatcounter-container[GitHub packages]
+|https://github.com/patrickdung/goatcounter-container/pkgs/container/goatcounter-container[GitHub container registry]
 |Yes
 |No official Docker image is provided
 |
