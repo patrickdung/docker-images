@@ -56,6 +56,7 @@ RUN set -eux && \
     chown wiki:wiki /wiki
 
 COPY --from=build /usr/local/bundle/ /usr/local/bundle/
+COPY entrypoint.sh /
 
 ##USER 1000:1000
 USER wiki
@@ -65,13 +66,16 @@ VOLUME /wiki
 WORKDIR /wiki
 
 ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2
-ENV GIT_BRANCH_NAME ${GIT_BRANCH_NAME}
+ENV GIT_BRANCH_NAME=main
 
 # Not using home directory as wiki repo
 # gollum assume default branch is main
 
 #ENTRYPOINT ["gollum"]
 #ENTRYPOINT gollum /wiki --ref ${GIT_BRANCH_NAME}
-ENTRYPOINT ["gollum", "/wiki", "--ref", "${GIT_BRANCH_NAME}"]
+#In next line, ${GIT_BRANCH_NAME} would not be deferenced
+#ENTRYPOINT ["gollum", "/wiki", "--ref", "${GIT_BRANCH_NAME}"]
+
+ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 4567
