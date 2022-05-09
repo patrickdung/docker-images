@@ -71,13 +71,10 @@ a|
 |
 
 |https://github.com/gollum/gollum/[Gollum]
-|https://github.com/patrickdung/docker-images/tree/main/gollum[GitHub repo, a Git mirror]
-|N/A, currently Dockerfile only
-|N/A
-a|
-* Just Dockerfile (AMD64)
-* I would create the image if I would use ARM64 with Gollum in the future
-* Use Debian as base OS
+|https://github.com/patrickdung/gollum-container/[GitHub repo]
+|https://github.com/users/patrickdung/packages/container/package/gollum-container[GitHub container registry]
+|Yes
+|Use Debian as base OS
 |
 
 |===
