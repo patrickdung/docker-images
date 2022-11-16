@@ -29,14 +29,17 @@ being produced or contained.
 |https://gitlab.com/patrickdung/pod-recon/container_registry/2650242[GitLab Container Registry]
 |Yes
 |Collection of tools for troubleshooting in container environments
-|Use almalinux/8-minimal as base OS
+a|
+* Use almalinux/8-minimal as base OS
 
 |https://github.com/genuinetools/amicontained/[amicontained]
 |https://github.com/patrickdung/amicontained-build[GitHub repo]
 |https://github.com/patrickdung/amicontained-build/pkgs/container/amicontained-build[GitHub container registry]
 |Yes
 |Aims to create amicontained on ARM64 platform
-|Use Alpine as base OS
+a|
+* Use Alpine as base OS
+* Not using set-output for GH action
 
 |https://github.com/meilisearch/MeiliSearch/[MeiliSearch]
 |https://github.com/patrickdung/MeiliSearch-crossbuild[GitHub repo]
@@ -68,7 +71,9 @@ a|
 |https://github.com/patrickdung/goatcounter-container/pkgs/container/goatcounter-container[GitHub container registry]
 |Yes
 |No official Docker image is provided
-|Use almalinux/8-minimal as base OS
+a|
+* Use almalinux/8-minimal as base OS
+* Not using save-output for GH action
 
 |https://github.com/gollum/gollum/[Gollum]
 |https://github.com/patrickdung/gollum-container/[GitHub repo]
