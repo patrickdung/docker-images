@@ -72,7 +72,7 @@ a|
 |Yes
 |No official Docker image is provided
 a|
-* Use almalinux/8-minimal as base OS
+* Use almalinux/9 as base OS
 * Not using save-output for GH action
 
 |https://github.com/gollum/gollum/[Gollum]
