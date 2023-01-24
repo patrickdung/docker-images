@@ -82,6 +82,34 @@ a|
 |Include Pandoc and AsciiDoctor support in the container image
 |Use Debian as base OS
 
+|https://github.com/kubernetes/examples/tree/master/staging/volumes/nfs/nfs-data[Kubernetes example, NFS-exporter container with a file]
+|https://github.com/patrickdung/goatcounter-container[GitHub repo]
+|https://github.com/users/patrickdung/packages/container/package/k8s-example-nfs-data-container[GitHub container registry]
+|Yes
+|Outdated Docker image is provided, and no ARM64 support
+a|
+* Use almalinuxorg/9-minimal as base OS
+* Not using save-output for GH action
+
+|https://github.com/prometheus/prometheus/[Prometheus]
+|https://github.com/patrickdung/prometheus-glibc[My GitHub repo]
+|https://github.com/users/patrickdung/packages/container/package/prometheus-glibc[My GitHub container registry]
+|Yes
+|For customize with glibc support
+a|
+* Use ChainGuard busybox:latest-glibc as base OS
+* Not using save-output for GH action
+ 
+|https://github.com/facebook/mcrouter[mcrouter by Facebook/Meta]
+|https://github.com/patrickdung/mcrouter-container[My GitHub repo]
+a|
+* https://github.com/users/patrickdung/packages/container/package/mcrouter-container[My GitHub container registry, for AMD64]
+* https://gitlab.com/patrickdung/docker-images/container_registry/3798494[My GitLab container registry, for ARM64]
+|No
+|No official container images provided
+a|
+* Use Almalinux 8 as base OS
+
 |===
 
 == Container image verification by Cosign
