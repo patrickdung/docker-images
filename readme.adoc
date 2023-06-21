@@ -39,7 +39,7 @@ a|
 |Aims to create amicontained on ARM64 platform
 a|
 * Use Alpine as base OS
-* Not using set-output for GH action
+* Not using set-output for GH actions
 
 |https://github.com/meilisearch/MeiliSearch/[MeiliSearch]
 |https://github.com/patrickdung/MeiliSearch-crossbuild[GitHub repo]
@@ -47,14 +47,17 @@ a|
 |Yes
 a|
 * For using stripped MeiliSearch binaries
-|Use minideb Debian-11 as base OS
+* Not using set-output for GH actions
+|Use minideb Debian-12 as base OS
 
 |https://github.com/Requarks/wiki[WikiJS]
 |https://github.com/patrickdung/wikijs-crossbuild[GitHub repo]
 |https://github.com/patrickdung/wikijs-crossbuild/pkgs/container/wikijs-crossbuild[GitHub container registry]
 |Yes
-|Update NodeJS packages in WikiJS and other optimizations
-|Use node16 Debian-11 as base OS
+a|
+* Update NodeJS packages in WikiJS and other optimizations
+* Not using set-output for GH actions
+|Use node16 Debian-12 as base OS
 
 |https://github.com/coralproject/talk[Coral Project - Talk]
 |https://github.com/patrickdung/coral-project-talk-container[GitHub repo]
