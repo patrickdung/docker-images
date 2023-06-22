@@ -101,7 +101,7 @@ a|
 |For customization with glibc support
 a|
 * Use ChainGuard busybox:latest-glibc as base OS
-* Not using save-output for GH action
+* Not using save-output for GH actions
  
 |https://github.com/facebook/mcrouter[mcrouter by Facebook/Meta]
 |https://github.com/patrickdung/mcrouter-container[My GitHub repo]
@@ -112,6 +112,7 @@ a|
 |No official container images provided
 a|
 * Use Almalinux 8 as base OS
+* Not using save-output for GH actions
 
 |===
 
