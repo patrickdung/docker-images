@@ -30,7 +30,7 @@ being produced or contained.
 |Yes
 |Collection of tools for troubleshooting in container environments
 a|
-* Use almalinux/8-minimal as base OS
+* Use almalinux/9-minimal as base OS
 
 |https://github.com/genuinetools/amicontained/[amicontained]
 |https://github.com/patrickdung/amicontained-build[GitHub repo]
