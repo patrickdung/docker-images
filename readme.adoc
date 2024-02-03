@@ -56,7 +56,7 @@ a|
 |Yes
 |Update NodeJS packages in WikiJS and other optimizations
 a|
-* Use node16 Debian-12 as base OS
+* Use node18 Debian-12 as base OS
 * Not using set-output for GH actions
 
 |https://github.com/coralproject/talk[Coral Project - Talk]
@@ -66,7 +66,7 @@ a|
 a|
 * Coral Project - Talk does not (currently) provide official ARM64 Docker image
 a|
-* Use node14 Debian-11 as base OS
+* Use node20 Debian-11 as base OS
 * CircleCI (build), GH actions (Cosign/SBOM, broken)
 
 |https://github.com/arp242/goatcounter[Goat Counter]
@@ -75,7 +75,7 @@ a|
 |Yes
 |No official Docker image is provided
 a|
-* Use almalinuxorg/9-minimal as base OS
+* Use rockylinux/9-minimal as base OS
 * Not using save-output for GH action
 
 |https://github.com/gollum/gollum/[Gollum]
@@ -86,7 +86,7 @@ a|
 |Use ruby Debian-11 as base OS
 
 |https://github.com/kubernetes/examples/tree/master/staging/volumes/nfs/nfs-data[Kubernetes example, NFS-exporter container with a file]
-|https://github.com/patrickdung/goatcounter-container[GitHub repo]
+|https://github.com/patrickdung/k8s-example-nfs-data-container[GitHub repo]
 |https://github.com/users/patrickdung/packages/container/package/k8s-example-nfs-data-container[GitHub container registry]
 |Yes
 |Outdated Docker image is provided, and no ARM64 support
