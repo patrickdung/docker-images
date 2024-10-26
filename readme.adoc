@@ -98,7 +98,7 @@ a|
 |https://github.com/patrickdung/prometheus-glibc[My GitHub repo]
 |https://github.com/users/patrickdung/packages/container/package/prometheus-glibc[My GitHub container registry]
 |Yes
-|For customization with glibc support
+|For customization with glibc and jemalloc support, but later turns out that jemalloc is not used
 a|
 * Use ChainGuard busybox:latest-glibc as base OS
 * Not using save-output for GH actions
