@@ -26,11 +26,11 @@ being produced or contained.
 
 |pod-recon
 |https://github.com/patrickdung/pod-recon[GitHub repo, a Git mirror]
-|Need to migrate to gitlab.hk
+|https://gitlab.com/patrick.dung/pod-recon/container_registry
 |Yes
 |Collection of tools for troubleshooting in container environments
 a|
-* Use almalinux/9-minimal as base OS
+* Use rockylinux minimal as base OS
 
 |https://github.com/genuinetools/amicontained/[amicontained]
 |https://github.com/patrickdung/amicontained-build[GitHub repo]
@@ -61,7 +61,7 @@ a|
 
 |https://github.com/coralproject/talk[Coral Project - Talk]
 |https://github.com/patrickdung/coral-project-talk-container[GitHub repo]
-|https://gitlab.hk/patrickdung/docker-images/container_registry/361[GitLab.hk Container Registry, ARM64 only]
+|https://gitlab.com/patrick.dung/docker-images/container_registry/8351843[GitLab.com Container Registry, ARM64 only]
 |Yes
 a|
 * Coral Project - Talk does not (currently) provide official ARM64 Docker image
@@ -107,7 +107,7 @@ a|
 |https://github.com/patrickdung/mcrouter-container[My GitHub repo]
 a|
 * https://github.com/users/patrickdung/packages/container/package/mcrouter-container[My GitHub container registry, for AMD64]
-* https://gitlab.hk/patrickdung/docker-images/container_registry/362[My GitLab.hk container registry, for ARM64]
+* https://gitlab.com/patrick.dung/docker-images/container_registry/8351928[My GitLab.com container registry, for ARM64]
 |No
 |No official container images provided
 a|
