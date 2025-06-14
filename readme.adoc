@@ -25,12 +25,14 @@ being produced or contained.
 |Remark
 
 |pod-recon
-|https://github.com/patrickdung/pod-recon
-|https://github.com/users/patrickdung/packages/container/package/pod-recon%2Fpod-recon
+|https://gitlab.com/patrick.dung/pod-recon
+|https://gitlab.com/patrick.dung/pod-recon/container_registry
 |No
 |Collection of tools for troubleshooting in container environments
 a|
-* Use Rocky Linux minimal as base OS
+* Use Rocky Linux 10-minimal as base OS
+* https://github.com/patrickdung/pod-recon not updated, WIP
+* https://github.com/users/patrickdung/packages/container/package/pod-recon%2Fpod-recon not updated, WIP
 
 |https://github.com/genuinetools/amicontained/[amicontained]
 |https://github.com/patrickdung/amicontained-build[GitHub repo]
