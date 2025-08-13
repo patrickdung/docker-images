@@ -55,7 +55,7 @@ a|
 |https://github.com/Requarks/wiki[WikiJS]
 |https://github.com/patrickdung/wikijs-crossbuild[GitHub repo]
 |https://github.com/patrickdung/wikijs-crossbuild/pkgs/container/wikijs-crossbuild[GitHub container registry]
-|Yes
+|No (after 2025 Aug)
 |Update NodeJS packages in WikiJS and other optimizations
 a|
 * Use node18 Debian-12 as base OS
