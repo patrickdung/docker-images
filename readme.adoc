@@ -58,7 +58,7 @@ a|
 |No (after 2025 Aug)
 |Update NodeJS packages in WikiJS and other optimizations
 a|
-* Use node18 Debian-12 as base OS
+* Use node20 Debian-13 as base OS
 * Not using set-output for GH actions
 
 |https://github.com/coralproject/talk[Coral Project - Talk]
