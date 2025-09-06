@@ -68,7 +68,7 @@ a|
 a|
 * Coral Project - Talk does not (currently) provide official ARM64 Docker image
 a|
-* Use node20 Debian-11 as base OS
+* Use node20 Debian-11 as build image, use node20 Debian-13 (trixie) as running image
 * CircleCI (build), GH actions (Cosign/SBOM, broken)
 
 |https://github.com/arp242/goatcounter[Goat Counter]
