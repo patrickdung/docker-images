@@ -46,16 +46,16 @@ a|
 |https://github.com/meilisearch/MeiliSearch/[MeiliSearch]
 |https://github.com/patrickdung/MeiliSearch-crossbuild[GitHub repo]
 |https://github.com/patrickdung/MeiliSearch-crossbuild/pkgs/container/meilisearch-crossbuild[GitHub container registry]
-|Yes
+|No (after 2024)
 |For using stripped MeiliSearch binaries
 a|
-* Use minideb Debian-12 as base OS
+* Use minideb Debian-13 trixie as base OS
 * Not using set-output for GH actions
 
 |https://github.com/Requarks/wiki[WikiJS]
 |https://github.com/patrickdung/wikijs-crossbuild[GitHub repo]
 |https://github.com/patrickdung/wikijs-crossbuild/pkgs/container/wikijs-crossbuild[GitHub container registry]
-|No (after 2025 Aug)
+|No (after 2024)
 |Update NodeJS packages in WikiJS and other optimizations
 a|
 * Use node20 Debian-13 as base OS
