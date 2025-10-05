@@ -77,7 +77,7 @@ a|
 |Yes
 |No official Docker image is provided
 a|
-* Use rockylinux/9-minimal as base OS
+* Use rockylinux/10-minimal as base OS
 * Not using save-output for GH action
 
 |https://github.com/gollum/gollum/[Gollum]
